@@ -23,11 +23,12 @@ import { Button } from "./components/DemoComponents";
 import Bookings from "./components/Bookings";
 import Profile from "./components/Profile";
 import Community from "./components/Community";
+import Welcome from "./welcome";
 
 export default function App() {
   const { setFrameReady, isFrameReady, context } = useMiniKit();
   const [frameAdded, setFrameAdded] = useState(false);
-  const [activeTab, setActiveTab] = useState("bookings");
+  const [activeTab, setActiveTab] = useState("welcome");
 
   // Persisted state for appointments stored as JSON
   const [appointments, setAppointments] = useState(() => {
@@ -111,6 +112,13 @@ export default function App() {
 
         <nav className="flex flex-wrap justify-center mb-8 space-x-4 sm:space-x-8">
           <Button
+            variant={activeTab === "welcome" ? "primary" : "ghost"}
+            onClick={() => setActiveTab("welcome")}
+            className="rounded-full px-4 sm:px-6 py-2 sm:py-3 font-semibold transition-colors duration-300 hover:bg-pink-300"
+          >
+            Welcome
+          </Button>
+          <Button
             variant={activeTab === "bookings" ? "primary" : "ghost"}
             onClick={() => setActiveTab("bookings")}
             className="rounded-full px-4 sm:px-6 py-2 sm:py-3 font-semibold transition-colors duration-300 hover:bg-pink-300"
@@ -140,6 +148,7 @@ export default function App() {
               setAppointments={setAppointments}
             />
           )}
+          {activeTab === "welcome" && <Welcome />}
           {activeTab === "profile" && <Profile appointments={appointments} />}
           {activeTab === "community" && (
             <Community messages={messages} setMessages={setMessages} />
