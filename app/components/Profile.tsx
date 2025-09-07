@@ -1,8 +1,8 @@
 import { useState } from "react";
 
 export default function Profile() {
-  const [points, setPoints] = useState(0);
-  const [sessionsAttended, setSessionsAttended] = useState(0);
+  const [points] = useState(0);
+  const [sessionsAttended] = useState(0);
 
   // This would be linked to wallet address and backend or blockchain in real app
   // For demo, points increase by 10 for each attended session
