@@ -135,3 +135,45 @@ export default function App() {
     </div>
   );
 }
+
+// Persisted state for appointments
+const [appointments, setAppointments] = useState(() => {
+  if (typeof window !== "undefined") {
+    const saved = localStorage.getItem("appointments");
+    return saved ? JSON.parse(saved) : [];
+  }
+  return [];
+});
+
+// Persisted state for messages
+const [messages, setMessages] = useState(() => {
+  if (typeof window !== "undefined") {
+    const saved = localStorage.getItem("messages");
+    return saved ? JSON.parse(saved) : [];
+  }
+  return [];
+});
+
+// Persisted state for attendance
+const [attendance, setAttendance] = useState(() => {
+  if (typeof window !== "undefined") {
+    const saved = localStorage.getItem("attendance");
+    return saved ? JSON.parse(saved) : {};
+  }
+  return {};
+});
+
+// Save appointments to localStorage on change
+useEffect(() => {
+  localStorage.setItem("appointments", JSON.stringify(appointments));
+}, [appointments]);
+
+// Save messages to localStorage on change
+useEffect(() => {
+  localStorage.setItem("messages", JSON.stringify(messages));
+}, [messages]);
+
+// Save attendance to localStorage on change
+useEffect(() => {
+  localStorage.setItem("attendance", JSON.stringify(attendance));
+}, [attendance]);
