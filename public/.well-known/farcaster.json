@@ -1,0 +1,24 @@
+{
+  "frame": {
+    "name": "mental-support",
+    "tags": ["health", "community", "social", "care", "mental-health"],
+    "homeUrl": "https://mental-support-sigma.vercel.app",
+    "iconUrl": "https://mental-support-sigma.vercel.app/icon.png",
+    "ogTitle": "Mental-support",
+    "tagline": "grow",
+    "version": "1",
+    "imageUrl": "https://mental-support-sigma.vercel.app/image.png",
+    "subtitle": "Your mental health matters",
+    "webhookUrl": "https://mental-support-sigma.vercel.app/api/webhook",
+    "buttonTitle": "Open",
+    "description": "we offer profesionals who are knowledgeble in mental health, you will be able to book and appointment and have the ability get help.",
+    "splashImageUrl": "https://mental-support-sigma.vercel.app/splash.png",
+    "primaryCategory": "health-fitness",
+    "splashBackgroundColor": "#7d4039"
+  },
+  "accountAssociation": {
+    "header": "eyJmaWQiOjEzMjY0NjUsInR5cGUiOiJhdXRoIiwia2V5IjoiMHhEOUUwNGY1YjIyRTAyMDBFMjlFQWRkRTk0QzkyNjdDNDRmRkZFM0IxIn0",
+    "payload": "eyJkb21haW4iOiJtZW50YWwtc3VwcG9ydC1zaWdtYS52ZXJjZWwuYXBwIn0",
+    "signature": "NYFzKcq2CKdtpGX8NU04RZ7uZMx5EvZatZN4KsuMigsiZwDZs6I12hx6kImFIksCASTCMngPn0xzSwgjqWTtIRs="
+  }
+}
