@@ -24,19 +24,7 @@ import Bookings from "./components/Bookings";
 import Profile from "./components/Profile";
 import Community from "./components/Community";
 
-import React from "react";
-import { useAccount } from "wagmi";
-import { useRouter } from "next/router";
-
 export default function App() {
-  const { isConnected } = useAccount();
-  const router = useRouter();
-
-  React.useEffect(() => {
-    if (!isConnected) {
-      router.push("/welcome");
-    }
-  }, [isConnected, router]);
   const { setFrameReady, isFrameReady, context } = useMiniKit();
   const [frameAdded, setFrameAdded] = useState(false);
   const [activeTab, setActiveTab] = useState("bookings");
