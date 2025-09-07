@@ -1,15 +1,17 @@
 import React from "react";
 import { useRouter } from "next/router";
-import { useWeb3Modal } from "@web3modal/react";
+import { useConnect } from "wagmi";
 import { useAccount } from "wagmi";
 
 export default function Welcome() {
   const router = useRouter();
   const { isConnected } = useAccount();
-  const { open } = useWeb3Modal();
+  const { connect, connectors } = useConnect();
 
   const handleConnect = () => {
-    open();
+    if (connectors.length > 0) {
+      connect({ connector: connectors[0] });
+    }
   };
 
   React.useEffect(() => {
