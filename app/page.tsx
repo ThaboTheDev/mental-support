@@ -140,9 +140,7 @@ export default function App() {
               setAppointments={setAppointments}
             />
           )}
-          {activeTab === "profile" && (
-            <Profile messages={messages} setMessages={setMessages} />
-          )}
+          {activeTab === "profile" && <Profile />}
           {activeTab === "community" && (
             <Community messages={messages} setMessages={setMessages} />
           )}
