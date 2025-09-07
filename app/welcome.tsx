@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import { useRouter } from "next/router";
 import { useWeb3Modal } from "@web3modal/react";
 import { useAccount } from "wagmi";
