@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 
 interface ChatMessage {
   id: string;
@@ -6,21 +6,6 @@ interface ChatMessage {
   message: string;
   timestamp: number;
 }
-
-const dummyChats: ChatMessage[] = [
-  {
-    id: "1",
-    userId: "user1",
-    message: "Hello! How can I help you today?",
-    timestamp: Date.now() - 60000,
-  },
-  {
-    id: "2",
-    userId: "user2",
-    message: "I am looking for some support.",
-    timestamp: Date.now() - 30000,
-  },
-];
 
 export default function Community({
   messages,

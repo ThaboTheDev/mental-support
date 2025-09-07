@@ -1,14 +1,8 @@
 import { useState } from "react";
 
-export default function Profile({
-  messages,
-  setMessages,
-}: {
-  messages: any[];
-  setMessages: React.Dispatch<React.SetStateAction<any[]>>;
-}) {
-  const [points] = useState(0);
-  const [sessionsAttended] = useState(0);
+export default function Profile() {
+  const [points] = useState<number>(0);
+  const [sessionsAttended] = useState<number>(0);
 
   // This would be linked to wallet address and backend or blockchain in real app
   // For demo, points increase by 10 for each attended session
