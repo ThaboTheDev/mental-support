@@ -1,6 +1,12 @@
 import { useState } from "react";
 
-export default function Profile() {
+export default function Profile({
+  messages,
+  setMessages,
+}: {
+  messages: any[];
+  setMessages: React.Dispatch<React.SetStateAction<any[]>>;
+}) {
   const [points] = useState(0);
   const [sessionsAttended] = useState(0);
 

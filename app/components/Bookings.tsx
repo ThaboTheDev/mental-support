@@ -3,11 +3,17 @@ import { Button } from "./DemoComponents";
 
 const specialists = ["Dr. Smith", "Dr. Johnson", "Dr. Lee", "Dr. Patel"];
 
-export default function Bookings() {
+type Appointment = { specialist: string; date: string; attended: boolean };
+
+export default function Bookings({
+  appointments,
+  setAppointments,
+}: {
+  appointments: Appointment[];
+  setAppointments: React.Dispatch<React.SetStateAction<Appointment[]>>;
+}) {
   const [selectedSpecialist, setSelectedSpecialist] = useState("");
   const [selectedDate, setSelectedDate] = useState("");
-  type Appointment = { specialist: string; date: string; attended: boolean };
-  const [appointments, setAppointments] = useState<Appointment[]>([]);
 
   const bookAppointment = () => {
     if (!selectedSpecialist || !selectedDate) return;

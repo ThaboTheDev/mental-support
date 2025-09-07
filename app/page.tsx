@@ -134,9 +134,18 @@ export default function App() {
         </nav>
 
         <main className="flex-1 rounded-3xl p-8 bg-pink-50 shadow-lg">
-          {activeTab === "bookings" && <Bookings />}
-          {activeTab === "profile" && <Profile />}
-          {activeTab === "community" && <Community />}
+          {activeTab === "bookings" && (
+            <Bookings
+              appointments={appointments}
+              setAppointments={setAppointments}
+            />
+          )}
+          {activeTab === "profile" && (
+            <Profile messages={messages} setMessages={setMessages} />
+          )}
+          {activeTab === "community" && (
+            <Community messages={messages} setMessages={setMessages} />
+          )}
         </main>
 
         <footer className="mt-6 pt-8 flex justify-center border-t border-pink-300">

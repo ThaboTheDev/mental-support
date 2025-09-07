@@ -22,13 +22,18 @@ const dummyChats: ChatMessage[] = [
   },
 ];
 
-export default function Community() {
-  const [messages, setMessages] = useState<ChatMessage[]>(dummyChats);
+export default function Community({
+  messages,
+  setMessages,
+}: {
+  messages: ChatMessage[];
+  setMessages: React.Dispatch<React.SetStateAction<ChatMessage[]>>;
+}) {
   const [input, setInput] = useState("");
   const [userId] = useState("user" + Math.floor(Math.random() * 10000));
-  const chatEndRef = useRef<HTMLDivElement>(null);
+  const chatEndRef = React.useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  React.useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
