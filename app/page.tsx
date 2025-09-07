@@ -29,6 +29,24 @@ export default function App() {
   const [frameAdded, setFrameAdded] = useState(false);
   const [activeTab, setActiveTab] = useState("bookings");
 
+  // Persisted state for appointments stored as JSON
+  const [appointments, setAppointments] = useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("appointments.json");
+      return saved ? JSON.parse(saved) : [];
+    }
+    return [];
+  });
+
+  // Persisted state for chat messages stored as JSON
+  const [messages, setMessages] = useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("messages.json");
+      return saved ? JSON.parse(saved) : [];
+    }
+    return [];
+  });
+
   const addFrame = useAddFrame();
   const openUrl = useOpenUrl();
 
@@ -68,7 +86,7 @@ export default function App() {
 
   return (
     <div className="flex flex-col min-h-screen font-sans bg-gradient-to-br from-pink-200 via-pink-100 to-pink-50 text-pink-900">
-      <div className="w-full max-w-3xl mx-auto px-8 py-10 rounded-3xl shadow-2xl bg-white/95 backdrop-blur-lg">
+      <div className="w-full max-w-3xl mx-auto px-4 sm:px-8 py-10 rounded-3xl shadow-2xl bg-white/95 backdrop-blur-lg">
         <header className="flex justify-between items-center mb-8 h-14 border-b border-pink-300">
           <div>
             <div className="flex items-center space-x-4">
@@ -91,25 +109,25 @@ export default function App() {
           <div>{saveFrameButton()}</div>
         </header>
 
-        <nav className="flex justify-center mb-8 space-x-8">
+        <nav className="flex flex-wrap justify-center mb-8 space-x-4 sm:space-x-8">
           <Button
             variant={activeTab === "bookings" ? "primary" : "ghost"}
             onClick={() => setActiveTab("bookings")}
-            className="rounded-full px-6 py-3 font-semibold transition-colors duration-300 hover:bg-pink-300"
+            className="rounded-full px-4 sm:px-6 py-2 sm:py-3 font-semibold transition-colors duration-300 hover:bg-pink-300"
           >
             Book Appointment
           </Button>
           <Button
             variant={activeTab === "profile" ? "primary" : "ghost"}
             onClick={() => setActiveTab("profile")}
-            className="rounded-full px-6 py-3 font-semibold transition-colors duration-300 hover:bg-pink-300"
+            className="rounded-full px-4 sm:px-6 py-2 sm:py-3 font-semibold transition-colors duration-300 hover:bg-pink-300"
           >
             Profile
           </Button>
           <Button
             variant={activeTab === "community" ? "primary" : "ghost"}
             onClick={() => setActiveTab("community")}
-            className="rounded-full px-6 py-3 font-semibold transition-colors duration-300 hover:bg-pink-300"
+            className="rounded-full px-4 sm:px-6 py-2 sm:py-3 font-semibold transition-colors duration-300 hover:bg-pink-300"
           >
             Community
           </Button>
