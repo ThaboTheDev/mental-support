@@ -18,11 +18,11 @@ import {
   WalletDropdown,
   WalletDropdownDisconnect,
 } from "@coinbase/onchainkit/wallet";
-import { useEffect, useMemo, useState, useCallback } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { Button } from "./components/DemoComponents";
-import { Icon } from "./components/DemoComponents";
 import { Home } from "./components/DemoComponents";
-import { Features } from "./components/DemoComponents";
+import Bookings from "./components/Bookings";
+import Profile from "./components/Profile";
 
 export default function App() {
   const { setFrameReady, isFrameReady, context } = useMiniKit();
@@ -43,7 +43,7 @@ export default function App() {
     setFrameAdded(Boolean(frameAdded));
   }, [addFrame]);
 
-  const saveFrameButton = useMemo(() => {
+  const saveFrameButton = useCallback(() => {
     if (context && !context.client.added) {
       return (
         <Button
@@ -51,22 +51,18 @@ export default function App() {
           size="sm"
           onClick={handleAddFrame}
           className="text-[var(--app-accent)] p-4"
-          icon={<Icon name="plus" size="sm" />}
         >
           Save Frame
         </Button>
       );
     }
-
     if (frameAdded) {
       return (
         <div className="flex items-center space-x-1 text-sm font-medium text-[#0052FF] animate-fade-out">
-          <Icon name="check" size="sm" className="text-[#0052FF]" />
           <span>Saved</span>
         </div>
       );
     }
-
     return null;
   }, [context, frameAdded, handleAddFrame]);
 
@@ -92,12 +88,34 @@ export default function App() {
               </Wallet>
             </div>
           </div>
-          <div>{saveFrameButton}</div>
+          <div>{saveFrameButton()}</div>
         </header>
+
+        <nav className="flex justify-around mb-4">
+          <Button
+            variant={activeTab === "home" ? "primary" : "ghost"}
+            onClick={() => setActiveTab("home")}
+          >
+            Home
+          </Button>
+          <Button
+            variant={activeTab === "bookings" ? "primary" : "ghost"}
+            onClick={() => setActiveTab("bookings")}
+          >
+            Book Appointment
+          </Button>
+          <Button
+            variant={activeTab === "profile" ? "primary" : "ghost"}
+            onClick={() => setActiveTab("profile")}
+          >
+            Profile
+          </Button>
+        </nav>
 
         <main className="flex-1">
           {activeTab === "home" && <Home setActiveTab={setActiveTab} />}
-          {activeTab === "features" && <Features setActiveTab={setActiveTab} />}
+          {activeTab === "bookings" && <Bookings />}
+          {activeTab === "profile" && <Profile />}
         </main>
 
         <footer className="mt-2 pt-4 flex justify-center">
