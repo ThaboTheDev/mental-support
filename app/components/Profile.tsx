@@ -1,11 +1,12 @@
 import { useState } from "react";
 
-export default function Profile() {
-  const [points] = useState<number>(0);
-  const [sessionsAttended] = useState<number>(0);
-
-  // This would be linked to wallet address and backend or blockchain in real app
-  // For demo, points increase by 10 for each attended session
+export default function Profile({
+  appointments,
+}: {
+  appointments: { attended: boolean }[];
+}) {
+  const sessionsAttended = appointments.filter((appt) => appt.attended).length;
+  const points = sessionsAttended * 10;
 
   return (
     <div className="space-y-6 bg-pink-50 p-6 rounded-2xl shadow-md text-pink-800">
